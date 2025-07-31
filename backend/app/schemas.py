@@ -7,11 +7,17 @@ class SensorReadingCreate(BaseModel):
     sensor_type : str
     reading_value : float
     unit : str
+    class Config:
+        orm_mode = True
 
 class BatchSensorUpload(BaseModel):
     readings : list[SensorReadingCreate]
+    class Config:
+        orm_mode = True
 
 class AnalyticsResponse(BaseModel):
     sensor_type : str
     field_id : int
     avg_value : float
+    class Config:
+        orm_mode = True
