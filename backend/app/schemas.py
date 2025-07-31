@@ -27,3 +27,4 @@ class TimeSeriesResponse(BaseModel):
     sensor_type: str
     field_id: int
     data: list[TimeSeriesDataPoint]
+

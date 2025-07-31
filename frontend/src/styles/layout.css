@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f7f7f7;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3B6E22;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-buttons button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: none;
+  color: #3B6E22;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav-buttons .active {
+  background-color: #c0f5b0;
+}
+
+.page {
+  padding: 2rem;
+}
+
+.nav-buttons button:hover {
+  background-color: #e7f9d5;
+}
+

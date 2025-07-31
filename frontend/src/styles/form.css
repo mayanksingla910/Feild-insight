@@ -1,0 +1,139 @@
+.reading-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #fcfbf9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.reading-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.reading-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.reading-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.reading-field label {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+}
+
+.reading-field input,
+.reading-field select {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f8f6f3;
+  font-size: 0.95rem;
+}
+
+.reading-field input:focus,
+.reading-field select:focus {
+  outline: none;
+  border-color: #3B6E22;
+  background-color: #fff;
+}
+
+.unit-field {
+  color: #3B6E22;
+  font-weight: 500;
+}
+
+.trash-button {
+  color: #242424;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+/*.btn{*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  justify-content: space-evenly;*/
+/*}*/
+
+.add-reading-btn, .submit-btn {
+  padding: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  background-color: #f8f6f3;
+  border: none;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.2s ease;
+  width: 100%;
+}
+
+.add-reading-btn:hover {
+  background-color: #e4e3dd;
+}
+
+.submit-btn{
+  background-color: #3B6E22;
+  color: #fefdfb;
+}
+
+.submit-btn:hover {
+  background-color: #3B9E55;
+}
+@media (max-width: 768px) {
+  .reading-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.method-toggle {
+  display: flex;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.method-toggle button {
+  background-color: white;
+  color: #3B6E22;
+  font-weight: bold;
+  border: 2px solid #3B6E22;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.method-toggle button:hover {
+  background-color: #e6f5de;
+  color: #3B6E22;
+}
+
+.method-toggle .active {
+  background-color: #3B6E22;
+  color: white;
+}
+
+.json-upload textarea,
+.json-upload input[type="file"] {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+

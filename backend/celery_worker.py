@@ -1,7 +1,9 @@
 from app.tasks import celery
 
-# Important so it auto-discovers tasks inside app.tasks
-celery.autodiscover_tasks(['app.tasks'])
+try:
+    celery.autodiscover_tasks(['app.tasks'])
+except Exception as e:
+    print("Celery worker failed to discover tasks:", e)
 
 # Start with:
 # celery -A backend.celery_worker worker --loglevel=info

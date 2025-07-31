@@ -29,20 +29,17 @@ def get_db():
 @app.post("/submit")
 async def submit_sensor_data(payload: schemas.BatchSensorUpload,
                              db: Session = Depends(get_db)):
-    print("➡️ /submit endpoint HIT")
     try:
-        print("Payload:", payload)
         readings = []
 
         for entry in payload.readings:
-            print("Reading:", entry)
             reading = models.SensorReading(**entry.model_dump())
             db.add(reading)
             readings.append(reading)
 
         db.commit()
 
-        # tasks.calculate_analytics.delay()  # comment during test
+        tasks.calculate_analytics.delay()
         return {"message": f"{len(readings)} readings received, analyzing..."}
 
     except Exception as e:
