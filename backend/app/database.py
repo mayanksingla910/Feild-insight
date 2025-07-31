@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DataBase_URL = os.getenv("DATABASE_URL", "postgresql://postgres:I'min123@localhost:5432/field-insight")
+DataBase_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DataBase_URL)
 SessionLocal = sessionmaker(bind=engine,

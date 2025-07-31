@@ -19,7 +19,7 @@ def calculate_analytics():
             func.avg(models.SensorReading.reading_value).label("avg_value")
         ).group_by(models.SensorReading.sensor_type, models.SensorReading.field_id).all()
 
-        print("\n📊 Analytics Calculated:")
+        print("\n Analytics Calculated:")
         for sensor_type, field_id, avg_value in results:
             print(f"Field {field_id} - {sensor_type}: {round(avg_value, 2)}")
 
