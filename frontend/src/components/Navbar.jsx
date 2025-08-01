@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartColumn, faArrowUpFromBracket, faChartLine, faSeedling } from "@fortawesome/free-solid-svg-icons";
-import "../styles/navbar.css";
+import "../styles/Navbar.css";
 
 function Navbar() {
   return (
