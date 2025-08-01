@@ -30,6 +30,19 @@ A full-stack sensor analytics dashboard that enables farmers, researchers, and a
 
 ---
 
+## 📸 Screenshots
+
+### 📊 Dashboard View
+![Dashboard View](assets/screenshots/dashboard-view.png)
+
+### 📤 Submit Data Form
+![Submit Data Form](assets/screenshots/upload-form.png)
+
+### 📈 TimeSeries Chart
+![TimeSeries Chart](assets/screenshots/TimeSeries-chart.png)
+
+---
+
 ## 📊 Key Features
 
 - 🔁 **Real-time sensor chart visualizations** (by field, sensor type)
@@ -176,6 +189,7 @@ VITE_BACKEND_URL=http://localhost:8000
 ## 💡 Future Improvements
 
 - ⏱️ Date filtering for analytics
+- 💹 Better Analytics Dashboard 
 - 👥 User authentication (JWT)
 - 📍 Field maps with geolocation
 - 🌍 Internationalization
