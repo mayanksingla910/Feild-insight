@@ -44,7 +44,7 @@ function Dashboard() {
       ) : (
         Object.entries(analytics).map(([sensorType, sensorData]) => (
           <div key={sensorType} className="chart-container">
-            <h3 style={{ marginTop: '2rem' }}>{sensorType.toUpperCase()} Data</h3>
+            <h3 style={{ marginTop: '2rem' }}>{sensorType.toUpperCase()} DATA</h3>
             <AnalyticsChart data={sensorData} height={100} />
           </div>
         ))
