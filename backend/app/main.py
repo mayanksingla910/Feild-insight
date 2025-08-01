@@ -1,10 +1,8 @@
-import traceback
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 from .database import SessionLocal, engine
 from .import models, schemas, tasks
 from fastapi.middleware.cors import CORSMiddleware
-from datetime import datetime
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -25,7 +23,7 @@ def get_db():
     finally:
         db.close()
 
-
+# submit button
 @app.post("/submit")
 async def submit_sensor_data(payload: schemas.BatchSensorUpload,
                              db: Session = Depends(get_db)):
@@ -39,14 +37,15 @@ async def submit_sensor_data(payload: schemas.BatchSensorUpload,
 
         db.commit()
 
+        # celery_worker call
         tasks.calculate_analytics.delay()
-        return {"message": f"{len(readings)} readings received, analyzing..."}
+        return {"message": f"{len(readings)} readings received, analyzed"}
 
     except Exception as e:
         print(f"Error while processing data: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-
+# Analytics page
 @app.get("/analytics", response_model=list[schemas.AnalyticsResponse])
 def get_analytics(db: Session = Depends(get_db)):
     from sqlalchemy import func
@@ -54,15 +53,16 @@ def get_analytics(db: Session = Depends(get_db)):
     results = db.query(
         models.SensorReading.sensor_type,
         models.SensorReading.field_id,
-        func.avg(models.SensorReading.reading_value).label("avg_value"),
-        func.min(models.SensorReading.reading_value).label("min_value"),
-        func.max(models.SensorReading.reading_value).label("max_value"),
-        func.count(models.SensorReading.id).label("count")
+        func.avg(models.SensorReading.reading_value).label("avg_value"), #get avg Value by field_id
+        func.min(models.SensorReading.reading_value).label("min_value"), #get min value by field_id
+        func.max(models.SensorReading.reading_value).label("max_value"), #get max value by field_id
+        func.count(models.SensorReading.id).label("count")               # no. of readings per field
     ).group_by(
         models.SensorReading.sensor_type,
         models.SensorReading.field_id
     ).all()
 
+    # output schema
     return [
         schemas.AnalyticsResponse(
             sensor_type=row[0],
@@ -74,6 +74,7 @@ def get_analytics(db: Session = Depends(get_db)):
         ) for row in results
     ]
 
+# timeseries data page
 @app.get("/timeseries", response_model=list[schemas.TimeSeriesResponse])
 def get_timeseries(db: Session = Depends(get_db)):
     from sqlalchemy import asc

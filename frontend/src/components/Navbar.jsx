@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo"> <FontAwesomeIcon icon={faSeedling} style={{ marginRight: '6px' }} />
-        Field Vision
+        Field Insight
       </div>
       <div className="nav-links">
         <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>

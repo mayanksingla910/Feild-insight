@@ -12,6 +12,7 @@ import ReadingForm from '../components/submit/ReadingForm';
 import JsonTextUpload from '../components/submit/JsonUpload';
 import FileUpload from '../components/submit/FileUpload';
 
+// submit Data by Form
 function SubmitData() {
   const [readings, setReadings] = useState([
     { timestamp: '', field_id: '', sensor_type: '', reading_value: '', unit: '' },
@@ -39,33 +40,36 @@ function SubmitData() {
     setReadings(updated);
   };
 
+  // Add readings in form
   const addReading = () => {
     setReadings([
       ...readings,
       { timestamp: '', field_id: '', sensor_type: '', reading_value: '', unit: '' },
     ]);
   };
-
+  // Remove readings in form
   const removeReading = (index) => {
     const updated = readings.filter((_, i) => i !== index);
     setReadings(updated);
   };
 
+  // Upload Data by pasting Json
   const handleJsonUpload = () => {
     try {
       const parsed = JSON.parse(jsonText);
       if (Array.isArray(parsed.readings)) {
         setReadings(parsed.readings);
-        setMessage('✅ JSON loaded!');
+        setMessage(' JSON loaded!');
       } else {
-        setMessage("❌ JSON must contain a 'readings' array.");
+        setMessage(" JSON must contain a 'readings' array.");
       }
     } catch (e) {
-      setMessage('❌ Invalid JSON.');
+      setMessage(' Invalid JSON.');
       console.error(e);
     }
   };
 
+  // Upload Data as a File
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -76,12 +80,12 @@ function SubmitData() {
         const parsed = JSON.parse(event.target.result);
         if (Array.isArray(parsed.readings)) {
           setReadings(parsed.readings);
-          setMessage('✅ File loaded!');
+          setMessage(' File loaded!');
         } else {
-          setMessage("❌ File must contain a 'readings' array.");
+          setMessage(" File must contain a 'readings' array.");
         }
       } catch (err) {
-        setMessage('❌ Failed to parse file.');
+        setMessage(' Failed to parse file.');
         console.error(err);
       }
     };
@@ -100,12 +104,12 @@ function SubmitData() {
         })),
       };
       const res = await axios.post('http://localhost:8000/submit', payload);
-      setMessage(res.data.message || '✅ Submitted!');
+      setMessage(res.data.message || ' Submitted!');
       setReadings([
         { timestamp: '', field_id: '', sensor_type: '', reading_value: '', unit: '' },
       ]);
     } catch (err) {
-      setMessage('❌ Failed to submit.');
+      setMessage(' Failed to submit.');
       console.error(err);
     }
   };

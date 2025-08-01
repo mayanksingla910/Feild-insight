@@ -6,4 +6,4 @@ except Exception as e:
     print("Celery worker failed to discover tasks:", e)
 
 # Start with:
-# celery -A backend.celery_worker worker --loglevel=info
+# celery -A backend.celery_worker worker --loglevel=info --pool=solo
