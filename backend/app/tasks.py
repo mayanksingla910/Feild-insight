@@ -1,12 +1,16 @@
+import os
 from celery import Celery
 from .database import SessionLocal
 from . import models
 from sqlalchemy import func
+from dotenv import load_dotenv
+
+load_dotenv()
 
 celery = Celery(
-    __name__,
-    broker='redis://localhost:6379/0',
-    backend='redis://localhost:6379/0'
+    "worker",
+    broker=os.getenv("REDIS_URL"),
+    backend=os.getenv("REDIS_URL")
 )
 
 @celery.task
