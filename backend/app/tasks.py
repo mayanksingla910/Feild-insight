@@ -4,13 +4,21 @@ from .database import SessionLocal
 from . import models
 from sqlalchemy import func
 from dotenv import load_dotenv
+import ssl
 
 load_dotenv()
 
-celery = Celery(
-    "worker",
-    broker=os.getenv("REDIS_URL"),
-    backend=os.getenv("REDIS_URL")
+redis_url = os.getenv("REDIS_URL")
+
+celery = Celery("worker", broker=redis_url, backend=redis_url)
+
+celery.conf.update(
+    broker_use_ssl={
+        "ssl_cert_reqs": ssl.CERT_NONE  # Use CERT_REQUIRED in production with proper certs
+    },
+    redis_backend_use_ssl={
+        "ssl_cert_reqs": ssl.CERT_NONE
+    }
 )
 
 @celery.task
@@ -37,6 +45,6 @@ def calculate_analytics():
             print(f"   ➤ Avg: {round(avg, 2)} | Min: {round(min_, 2)} | Max: {round(max_, 2)} | Count: {count}\n")
 
     except Exception as e:
-        print("Error in analytics calculation:", e)
+        print(" Error in analytics calculation:", e)
     finally:
         db.close()
