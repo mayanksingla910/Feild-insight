@@ -11,7 +11,7 @@ import {
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 function AnalyticsChart({ data }) {
-  const labels = data.map(item => `${item.sensor_type} (Field ${item.field_id})`);
+  const labels = data.map(item => `(Field ${item.field_id})`);
 
   const chartData = {
     labels,
