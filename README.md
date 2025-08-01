@@ -7,7 +7,7 @@ A full-stack sensor analytics dashboard that enables farmers, researchers, and a
 
 ## 🚀 Live Demo
 
-**Frontend:** [View on Vercel](https://feild-insight.vercel.app?_vercel_share=IcQ9RvdZepEqlchohDwtesuZqqSehVgU)  
+**Frontend:** [View on Vercel](https://feild-insight.vercel.app/)
 **Backend:** [API on Render](https://feild-insight.onrender.com/analytics)  
 
 ---
