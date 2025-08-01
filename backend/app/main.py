@@ -1,5 +1,4 @@
-import os
-import uvicorn
+
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 from .database import SessionLocal, engine
@@ -9,10 +8,6 @@ from fastapi.middleware.cors import CORSMiddleware
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-#
-# if __name__ == "__main__":
-port = int(os.environ.get("PORT", 8000))
-uvicorn.run(app, host="0.0.0.0", port=port)
 
 
 app.add_middleware(

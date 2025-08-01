@@ -103,7 +103,7 @@ function SubmitData() {
           reading_value: parseFloat(r.reading_value),
         })),
       };
-      const res = await axios.post('http://localhost:8000/submit', payload);
+      const res = await axios.post('https://feild-insight.onrender.com/submit', payload);
       setMessage(res.data.message || ' Submitted!');
       setReadings([
         { timestamp: '', field_id: '', sensor_type: '', reading_value: '', unit: '' },

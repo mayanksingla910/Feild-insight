@@ -20,7 +20,7 @@ function TimeSeries() {
   const [series, setSeries] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/timeseries')
+    axios.get('https://feild-insight.onrender.com/timeseries')
       .then(res => setSeries(res.data))
       .catch(err => console.error('❌ Failed to fetch timeseries:', err));
   }, []);

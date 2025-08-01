@@ -9,7 +9,7 @@ function Dashboard() {
   const [analytics, setAnalytics] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/analytics')
+    axios.get('https://feild-insight.onrender.com/analytics')
       .then(res => setAnalytics(res.data))
       .catch(err => console.error(err));
   }, []);
