@@ -81,8 +81,7 @@ field-insight-dashboard/
 │   │   │   │   ├── JsonUpload.jsx
 │   │   │   │   ├── ReadingForm.jsx
 │   │   │   ├── Navbar.jsx
-│   │   │   ├── TimeSeriesChart.jsx
-│   │   │   ├── TimeSeriesChart.jsx
+│   │   │   ├── AnalyticsChart.jsx
 │   │   ├── pages/
 │   │   │   ├── Dashboard.jsx
 │   │   │   ├── SubmitData.jsx
